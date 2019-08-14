@@ -11,7 +11,15 @@ class Mxperts_NoRegion_Block_Customer_Grid extends Mage_Adminhtml_Block_Widget_G
 //Dont extend the class Mage_Adminhtml_Block_Customer_Grid because this class adding the missing / commented columns again into the Grid!
 {
 
-    protected function _prepareCollection()
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setId('customerGrid');
+        $this->setUseAjax(true);
+        $this->setDefaultSort('entity_id');
+    }	
+	
+	protected function _prepareCollection()
     {
         $collection = Mage::getResourceModel('customer/customer_collection')
             ->addNameToSelect()
