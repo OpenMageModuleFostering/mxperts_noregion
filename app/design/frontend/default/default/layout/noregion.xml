@@ -15,9 +15,13 @@
 Checkout - No availability for showing and editing State / Province
 -->	
 	<checkout_multishipping_customer_address>
-		<remove name="customer_address_edit"/>
+		<remove name="customer_address_edit"/><!--important for Magento 1.3.x (Double Templates)-->
         <reference name="content">
-            <block type="customer/address_edit" name="noregion.customer_address_edit" template="noregion/customer/address/edit.phtml"/>
+			<block type="customer/address_edit" name="noregion_customer_address_edit" as="billing" template="customer/address/edit.phtml">
+				<action method="setTemplate" ifconfig="customer/noregion/enabled" ifvalue="1">
+					<template>noregion/customer/address/edit.phtml</template> 
+				</action>
+			</block>
         </reference>
     </checkout_multishipping_customer_address>
 	
@@ -26,13 +30,33 @@ Checkout - No availability for showing and editing State / Province
         <reference name="content">
 			<action method="unsetChild"><name>checkout.onepage.review</name></action><!--Important for compatiblity to the Marked Ready Germany Extension -->
             <block type="checkout/onepage" name="noregion.checkout.onepage" template="checkout/onepage.phtml">
-                <block type="checkout/onepage_login" name="checkout.onepage.login" as="login" template="checkout/onepage/login.phtml"/>
-                <block type="checkout/onepage_billing" name="checkout.onepage.billing" as="billing" template="noregion/checkout/onepage/billing.phtml"/>
-                <block type="checkout/onepage_shipping" name="checkout.onepage.shipping" as="shipping" template="noregion/checkout/onepage/shipping.phtml"/>
+                <block type="checkout/onepage_login" name="checkout.onepage.login" as="login" template="checkout/onepage/login.phtml">
+					<block type="page/html_wrapper" name="checkout.onepage.login.before" as="login_before">
+                        <action method="setMayBeInvisible"><value>1</value></action><!-- since Magento 1.4.x -->
+                    </block>
+				</block>
+				
+                <block type="checkout/onepage_billing" name="checkout.onepage.billing" as="billing" template="checkout/onepage/billing.phtml">
+				<action method="setTemplate" ifconfig="customer/noregion/enabled" ifvalue="1">
+					<template>noregion/checkout/onepage/billing.phtml</template> 
+				</action>
+				</block>
+				
+				<block type="checkout/onepage_shipping" name="checkout.onepage.shipping" as="shipping" template="checkout/onepage/shipping.phtml">
+				<action method="setTemplate" ifconfig="customer/noregion/enabled" ifvalue="1">
+					<template>noregion/checkout/onepage/shipping.phtml</template> 
+				</action>
+				</block>
+				
+				<!--Original blocks for billing and shipping section-->
+				<!--<block type="checkout/onepage_shipping" name="checkout.onepage.shipping" as="shipping" template="noregion/checkout/onepage/billing.phtml"/>-->
+                <!--<block type="checkout/onepage_shipping" name="checkout.onepage.shipping" as="shipping" template="noregion/checkout/onepage/shipping.phtml"/>-->
+				<!--Original blocks End-->
+				
                 <block type="checkout/onepage_shipping_method" name="checkout.onepage.shipping_method" as="shipping_method" template="checkout/onepage/shipping_method.phtml">
                     <block type="checkout/onepage_shipping_method_available" name="checkout.onepage.shipping_method.available" as="available" template="checkout/onepage/shipping_method/available.phtml"/>
                     <block type="checkout/onepage_shipping_method_additional" name="checkout.onepage.shipping_method.additional" as="additional" template="checkout/onepage/shipping_method/additional.phtml"/>
-                </block>
+                </block> 
                 <block type="checkout/onepage_payment" name="checkout.onepage.payment" as="payment" template="checkout/onepage/payment.phtml">
                     <block type="checkout/onepage_payment_methods" name="checkout.payment.methods" as="methods" template="checkout/onepage/payment/methods.phtml">
                         <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
@@ -47,17 +71,15 @@ Checkout - No availability for showing and editing State / Province
 <!--
 Customer - No availability of showing and editing State / Province
 -->
-	<customer_account_create>
-		<remove name="customer_form_register"/>
-        <reference name="content">
-            <block type="customer/form_register" name="noregion_customer_form_register" template="noregion/customer/form/register.phtml"/>
-        </reference>
-    </customer_account_create>
-	
 	<customer_address_form>
-		<remove name="customer_address_edit"/>
+		<remove name="customer_address_edit"/><!--important for Magento 1.3.x (Double Templates)-->
         <reference name="content">
-            <block type="customer/address_edit" name="noregion.customer_address_edit" template="noregion/customer/address/edit.phtml"/>
+			<block type="customer/address_edit" name="noregion_customer_address_edit" as="billing" template="customer/address/edit.phtml">
+				<action method="setTemplate" ifconfig="customer/noregion/enabled" ifvalue="1">
+					<template>noregion/customer/address/edit.phtml</template> 
+				</action>
+			</block>
         </reference>
     </customer_address_form>	
+	
 </layout>	

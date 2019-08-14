@@ -1,13 +1,13 @@
 {
     "name": "OpenMageModuleFostering/Mxperts_NoRegion",
     "type": "magento-module",
-    "license": "Open-Software-License-(OSL-3.0)",
+    "license": "OSL",
     "homepage": "",
-    "description": "Hide "State / Province" on the Store-Frontend Versteckt "Bundesland / Kanton" im Shop-Frontend",
+    "description": "Hide "State / Province" in the Store-Frontend & Backend.",
     "authors": [
     {
-        "name": "Daniel Sasse",
-        "email": "sasse@mxperts.de"
+        "name": "Johannes Teitge",
+        "email": "teitge@tmedia.de"
     }
 ],
     "suggest": {
