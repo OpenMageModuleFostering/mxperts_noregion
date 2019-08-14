@@ -11,7 +11,7 @@
 <config>
 	<modules>
         <Mxperts_NoRegion>
-            <version>0.1.3</version>
+            <version>0.1.4</version>
 			<depends>
                 <Mage_Adminhtml />
 				<Mage_Customer />

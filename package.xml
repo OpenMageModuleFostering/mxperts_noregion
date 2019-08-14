@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <package>
     <name>Mxperts_NoRegion</name>
-    <version>0.1.3</version>
+    <version>0.1.4</version>
     <stability>stable</stability>
     <license uri="http://opensource.org/licenses/osl-3.0.php">Open Software License (OSL 3.0)</license>
     <channel>community</channel>
     <extends/>
     <summary>Hide "State / Province" on the Store-Frontend Versteckt "Bundesland / Kanton" im Shop-Frontend</summary>
-    <description>Hide "State / Province" on the Store-Frontend. The Customer have no possibility to enter or edit "State / Province" statements in the checkout shipping </description>
+    <description>Hide "State / Province" on the Store-Frontend </description>
     <notes>none / keine</notes>
     <authors><author><name>Daniel Sasse</name><user>auto-converted</user><email>sasse@mxperts.de</email></author><author><name>Johannes Teitge</name><user>auto-converted</user><email>teitge@tmedia.de</email></author><author><name>Igor Jankovic</name><user>auto-converted</user><email>jankovic@tmedia.de</email></author></authors>
-    <date>2009-11-16</date>
-    <time>13:14:52</time>
-    <contents><target name="mageetc"><dir name="modules"><file name="Mxperts_NoRegion.xml" hash="f9f52307b6775dc2182f844cb4acebd2"/></dir></target><target name="magelocal"><dir name="Mxperts"><dir name="NoRegion"><dir name="Block"><dir name="Customer"><dir name="Edit"><dir name="Tab"><file name="Addresses.php" hash="ec9fa7a3fb4014a979c306528d1935ff"/></dir></dir><file name="Grid.php" hash="156b026a2e9595f5f2898442c651de52"/></dir></dir><dir name="etc"><file name="config.xml" hash="25095f1e0637e7756ef525f8cb4b68b3"/><file name="system.xml" hash="a7a81d2e1a70f4fb2ecffc19b35ee5e2"/></dir><dir name="Helper"><file name="Data.php" hash="6883e9931b37c228c87531fc99c2c3ec"/></dir><dir name="Model"><dir name="Quote"><file name="Address.php" hash="496da654002f7db614d611885d7e5eec"/></dir><file name="Address.php" hash="14918ff42e149f2c393e43383d8e426f"/></dir></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="default"><dir name="default"><dir name="layout"><file name="noregion.xml" hash="0e2c1764957960890cff2686ad79ee70"/></dir><dir name="template"><dir name="noregion"><dir name="checkout"><dir name="onepage"><file name="billing.phtml" hash="4dc6857dea86e9fd8995da59a9cf1705"/><file name="shipping.phtml" hash="80a08c20dc1e7d0599659b9ffcf0a905"/></dir></dir><dir name="customer"><dir name="address"><file name="edit.phtml" hash="fbab0bdb301a3d462875cc5909530232"/></dir><dir name="form"><file name="address.phtml" hash="0851e7e981297662cdeac15a4d718e24"/><file name="register.phtml" hash="21458dd2f5641b7122e9ace73b014416"/></dir></dir></dir></dir></dir></dir></dir></target></contents>
+    <date>2009-11-20</date>
+    <time>12:45:16</time>
+    <contents><target name="mageetc"><dir name="modules"><file name="Mxperts_NoRegion.xml" hash="f9f52307b6775dc2182f844cb4acebd2"/></dir></target><target name="magelocal"><dir name="Mxperts"><dir name="NoRegion"><dir name="Block"><dir name="Customer"><dir name="Edit"><dir name="Tab"><file name="Addresses.php" hash="ec9fa7a3fb4014a979c306528d1935ff"/></dir></dir><file name="Grid.php" hash="85aae7613b93143ae389e7843182c277"/></dir></dir><dir name="etc"><file name="config.xml" hash="f6d8868799a2f79bec36cfccd95028ae"/><file name="system.xml" hash="a7a81d2e1a70f4fb2ecffc19b35ee5e2"/></dir><dir name="Helper"><file name="Data.php" hash="6883e9931b37c228c87531fc99c2c3ec"/></dir><dir name="Model"><dir name="Quote"><file name="Address.php" hash="496da654002f7db614d611885d7e5eec"/></dir><file name="Address.php" hash="14918ff42e149f2c393e43383d8e426f"/></dir></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="default"><dir name="default"><dir name="layout"><file name="noregion.xml" hash="0e2c1764957960890cff2686ad79ee70"/></dir><dir name="template"><dir name="noregion"><dir name="checkout"><dir name="onepage"><file name="billing.phtml" hash="4dc6857dea86e9fd8995da59a9cf1705"/><file name="shipping.phtml" hash="80a08c20dc1e7d0599659b9ffcf0a905"/></dir></dir><dir name="customer"><dir name="address"><file name="edit.phtml" hash="fbab0bdb301a3d462875cc5909530232"/></dir><dir name="form"><file name="address.phtml" hash="0851e7e981297662cdeac15a4d718e24"/><file name="register.phtml" hash="21458dd2f5641b7122e9ace73b014416"/></dir></dir></dir></dir></dir></dir></dir></target></contents>
     <compatible/>
     <dependencies/>
 </package>

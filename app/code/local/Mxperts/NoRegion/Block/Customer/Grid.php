@@ -23,13 +23,14 @@ class Mxperts_NoRegion_Block_Customer_Grid extends Mage_Adminhtml_Block_Widget_G
     {
         $collection = Mage::getResourceModel('customer/customer_collection')
             ->addNameToSelect()
-            ->addAttributeToSelect('email')
+			->addAttributeToSelect('email')
             ->addAttributeToSelect('created_at')
             ->addAttributeToSelect('group_id')
             ->joinAttribute('billing_postcode', 'customer_address/postcode', 'default_billing', null, 'left')
             ->joinAttribute('billing_city', 'customer_address/city', 'default_billing', null, 'left')
             ->joinAttribute('billing_telephone', 'customer_address/telephone', 'default_billing', null, 'left')
             //->joinAttribute('billing_region', 'customer_address/region', 'default_billing', null, 'left')
+			//->joinAttribute('billing_company', 'customer_address/company', 'default_billing', null, 'left')
             ->joinAttribute('billing_country_id', 'customer_address/country_id', 'default_billing', null, 'left');
 
         $this->setCollection($collection);
@@ -53,10 +54,19 @@ class Mxperts_NoRegion_Block_Customer_Grid extends Mage_Adminhtml_Block_Widget_G
             'header'    => Mage::helper('customer')->__('Last Name'),
             'index'     => 'lastname'
         ));*/
-        $this->addColumn('name', array(
+        
+		
+		$this->addColumn('name', array(
             'header'    => Mage::helper('customer')->__('Name'),
             'index'     => 'name'
-        ));
+        ));        
+		
+		//Our New Column for Company
+		/*  $this->addColumn('billing_company', array(
+            'header'    => Mage::helper('sales')->__('Company'),
+            'index'     => 'billing_company'
+        ));  */
+		
         $this->addColumn('email', array(
             'header'    => Mage::helper('customer')->__('Email'),
             'width'     => '150',
@@ -142,6 +152,47 @@ class Mxperts_NoRegion_Block_Customer_Grid extends Mage_Adminhtml_Block_Widget_G
         $this->addExportType('*/*/exportCsv', Mage::helper('customer')->__('CSV'));
         $this->addExportType('*/*/exportXml', Mage::helper('customer')->__('XML'));
         return parent::_prepareColumns();
+    }
+	
+	protected function _prepareMassaction()
+    {
+        $this->setMassactionIdField('entity_id');
+        $this->getMassactionBlock()->setFormFieldName('customer');
+
+        $this->getMassactionBlock()->addItem('delete', array(
+             'label'    => Mage::helper('customer')->__('Delete'),
+             'url'      => $this->getUrl('*/*/massDelete'),
+             'confirm'  => Mage::helper('customer')->__('Are you sure?')
+        ));
+
+        $this->getMassactionBlock()->addItem('newsletter_subscribe', array(
+             'label'    => Mage::helper('customer')->__('Subscribe to newsletter'),
+             'url'      => $this->getUrl('*/*/massSubscribe')
+        ));
+
+        $this->getMassactionBlock()->addItem('newsletter_unsubscribe', array(
+             'label'    => Mage::helper('customer')->__('Unsubscribe from newsletter'),
+             'url'      => $this->getUrl('*/*/massUnsubscribe')
+        ));
+
+        $groups = $this->helper('customer')->getGroups()->toOptionArray();
+
+        array_unshift($groups, array('label'=> '', 'value'=> ''));
+        $this->getMassactionBlock()->addItem('assign_group', array(
+             'label'        => Mage::helper('customer')->__('Assign a customer group'),
+             'url'          => $this->getUrl('*/*/massAssignGroup'),
+             'additional'   => array(
+                'visibility'    => array(
+                     'name'     => 'group',
+                     'type'     => 'select',
+                     'class'    => 'required-entry',
+                     'label'    => Mage::helper('customer')->__('Group'),
+                     'values'   => $groups
+                 )
+            )
+        ));
+
+        return $this;
     }
 	
 	public function getGridUrl()
