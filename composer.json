@@ -1,16 +1,5 @@
 {
-    "name": "OpenMageModuleFostering/Mxperts_NoRegion",
-    "type": "magento-module",
-    "license": "OSL",
-    "homepage": "",
-    "description": "Hide "State / Province" in the Store-Frontend & Backend.",
-    "authors": [
-    {
-        "name": "Johannes Teitge",
-        "email": "teitge@tmedia.de"
-    }
-],
-    "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+    "keywords": [
+        "openmage-module"
+    ]
 }
